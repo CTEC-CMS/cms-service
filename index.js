@@ -97,22 +97,22 @@ exports.handler = function (event, context, callback) {
             if ( !isValidTIN ){
                 allValidData = false;
                 console.log(' invalid TIN ' + tin);
-                invalidTINList.push( { 'tin': tin , 'error' : 'TIN must be exactly 9 digits', 'rowNumber' : rowNumber});
+                invalidTINList.push( { 'columnName' : 'tin', 'value': tin , 'error' : 'TIN must be exactly 9 digits', 'rowNumber' : rowNumber});
             }
             if ( !isValidNPI ){
                 allValidData = false;
                 console.log(' invalid NPI ' + npi);
-                invalidNPIList.push( { 'npi': npi , 'error' : 'NPI must be exactly 10 digit', 'rowNumber' : rowNumber} );
+                invalidNPIList.push( { 'columnName' : 'npi', 'value': npi , 'error' : 'NPI must be exactly 10 digit', 'rowNumber' : rowNumber} );
             }
             if( !isValidModelType ) {
                 allValidData = false;
                 console.log(' invalid Model Type ' + modelType);
-                invalidModelTypeList.push( { 'modelType': modelType , 'error' : 'Model Type must contain alphabet and space', 'rowNumber' : rowNumber} );
+                invalidModelTypeList.push( { 'columnName' : 'modelType', 'value': modelType , 'error' : 'Model Type must contain alphabet and space', 'rowNumber' : rowNumber} );
             }
             if( !isValidDate ){
                 allValidData = false;
                 console.log(' invalid Valid Through Date ' + validThroughDate);
-                invalidValidThroughDate.push( { 'validThroughDate': validThroughDate , 'error' : 'Valid Through Date must be in mm/dd/yyyy format', 'rowNumber' : rowNumber} );
+                invalidValidThroughDate.push( { 'columnName' : 'validThroughDate',  'value': validThroughDate , 'error' : 'Valid Through Date must be in mm/dd/yyyy format', 'rowNumber' : rowNumber} );
             }
         }
         return allValidData;
@@ -157,7 +157,7 @@ exports.handler = function (event, context, callback) {
                     storageBucketName : storageBucketNameError,
                     statusMessage: statusMessage,
                     uploadFileName: srcKey,
-                    status: 'failed',
+                    status: 'Failed',
                     outFiles: 'no record',
                     recordsProcessed: 0,
                     filesCreated: 0,
@@ -239,7 +239,7 @@ exports.handler = function (event, context, callback) {
                                     storageBucketName : storageBucketName,
                                     statusMessage: 'Successfully Processed',
                                     uploadFileName: srcKey,
-                                    status: 'success',
+                                    status: 'Success',
                                     outFiles: separateFileNameList,
                                     recordsProcessed: TOTAL_NO_OF_RECORDS_TO_BE_PROCESSED,
                                     filesCreated: separateFileNameList.length,

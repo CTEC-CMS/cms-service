@@ -28,12 +28,12 @@ module.exports = {
          return month + '-' + day + '-' + year;
      },
      
-     // Checks if TIN has 9 digits//
+     // Checks if the TIN has 9 digits//
      validateTIN: function (tin) {
          return /\b[a-zA-Z0-9]{9}\b/.test(tin);
      },
  
-     // Checks if NPI is 10 digit or not //
+     // Checks if the NPI is 10 digit number or not //
      validateNPI: function(npi) {
          return /\b[a-zA-Z0-9]{10}\b/.test(npi);
      },
@@ -43,7 +43,7 @@ module.exports = {
          // var regex = /^[a-zA-Z ]*$/;
          return /^[a-zA-Z ]*$/.test(modelType);
      },
-     
+
      // checks if dateInput is in mm/dd/yyyy format //
      validateDate: function(dateInput){
          return /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/.test(dateInput);
