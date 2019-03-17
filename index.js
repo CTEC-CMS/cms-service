@@ -54,9 +54,18 @@ exports.handler = function (event, context, callback) {
     // Read a string of CSV data and convert it into an array of JSON Objects
     function CSVToArray(strData) {
         var lines = strData.split('\n');
+        console.log ( "No of records including header " + lines.length );
         var objArray = [];
-        var lineList = []
+        var lineList = [];
         // Creating a two dimensional array lines[columns[]] from the given CSV file //
+        // Remove blank lines records //
+        for ( var r=0; r<lines.length; r++ ){
+            var record = lines[r];
+            if ( record.length == 0){
+                console.log ( ' removing empty line record ' + r );
+                lines.splice(-1,1);
+            }
+        }
         TOTAL_NO_OF_RECORDS_TO_BE_PROCESSED = lines.length;
         for (var g = 0; g < TOTAL_NO_OF_RECORDS_TO_BE_PROCESSED; g++) {
             lines[g] = lines[g].replace(/\r?\n|\r/g, '');
